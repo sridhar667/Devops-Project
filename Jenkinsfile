@@ -19,14 +19,6 @@ pipeline {
                 sh './build.sh'
             }
         }
-        post {
-        success {
-            echo 'Build successful!'
-        }
-        failure {
-            echo 'Build failed.'
-        }
-    }
         stage('Push to Docker Hub') {
             when {
                 anyOf {
@@ -57,10 +49,18 @@ pipeline {
             echo 'Build or push failed.'
         }
     }
-      stage('Deploy') {
+    stage('Deploy') {
             steps {
                 sh './deploy.sh'
             }
+        }
+    }
+    post {
+        success {
+            echo 'Build successful!'
+        }
+        failure {
+            echo 'Build failed.'
         }
     }
     post {
