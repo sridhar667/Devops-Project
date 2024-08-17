@@ -41,14 +41,6 @@ pipeline {
                 }
             }
         }
-      post {
-        success {
-            echo 'Docker image successfully built and pushed to Docker Hub!'
-        }
-        failure {
-            echo 'Build or push failed.'
-        }
-    }
     stage('Deploy') {
             steps {
                 sh './deploy.sh'
@@ -69,6 +61,14 @@ pipeline {
         }
         failure {
             echo 'Deployment failed.'
+        }
+    }
+    post {
+        success {
+            echo 'Docker image successfully built and pushed to Docker Hub!'
+        }
+        failure {
+            echo 'Build or push failed.'
         }
     }
 }
