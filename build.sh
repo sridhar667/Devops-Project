@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Build the Docker image
-docker build -t react-app .
+docker build -t sridharsdocker/react-app .
 
