@@ -30,12 +30,12 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         if (env.BRANCH_NAME == 'dev') {
                             // Push the Docker image to the dev repository on Docker Hub
-                            sh "docker tag react-app registry.hub.docker.com ${DOCKERHUB_DEV_REPO}:dev_latest"
-                            sh "docker push registry.hub.docker.com ${DOCKERHUB_DEV_REPO}:dev_latest"
+                            sh "docker tag react-app registry.hub.docker.com/${DOCKERHUB_DEV_REPO}:dev_latest"
+                            sh "docker push registry.hub.docker.com/${DOCKERHUB_DEV_REPO}:dev_latest"
                         } else if (env.BRANCH_NAME == 'master') {
                             // Push the Docker image to the prod repository on Docker Hub
-                            sh "docker tag react-app registry.hub.docker.com ${DOCKERHUB_PROD_REPO}:latest"
-                            sh "docker push registry.hub.docker.com ${DOCKERHUB_PROD_REPO}:latest"
+                            sh "docker tag react-app registry.hub.docker.com/${DOCKERHUB_PROD_REPO}:latest"
+                            sh "docker push registry.hub.docker.com/${DOCKERHUB_PROD_REPO}:latest"
                         }
                     }
                 }
