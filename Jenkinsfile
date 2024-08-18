@@ -41,26 +41,10 @@ pipeline {
                 }
             }
         }
-    stage('Deploy') {
-            steps {
+       stage('Deploy') {
+          steps {
                 sh './deploy.sh'
             }
-        }
-    }
-    post {
-        success {
-            echo 'Build successful!'
-        }
-        failure {
-            echo 'Build failed.'
-        }
-    }
-    post {
-        success {
-            echo 'Deployment successful!'
-        }
-        failure {
-            echo 'Deployment failed.'
         }
     }
     post {
