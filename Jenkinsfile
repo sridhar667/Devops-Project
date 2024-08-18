@@ -16,6 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh './build.sh'
+                sh "docker tag react-app sridharsdocker/react-app-dev:dev_latest
             }
         }
         stage('Push to Docker Hub') {
@@ -30,11 +31,10 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         if (env.BRANCH_NAME == 'dev') {
                             // Push the Docker image to the dev repository on Docker Hub
-                            sh "docker tag react-app:latest ${DOCKERHUB_DEV_REPO}:dev_latest
                             sh "docker push ${DOCKERHUB_DEV_REPO}:dev_latest"
                         } else if (env.BRANCH_NAME == 'master') {
                             // Push the Docker image to the prod repository on Docker Hub
-                            sh "docker tag react-app:latest ${DOCKERHUB_PROD_REPO}:latest"
+                            sh "docker tag react-app-dev:dev_latest ${DOCKERHUB_PROD_REPO}:latest"
                             sh "docker push ${DOCKERHUB_PROD_REPO}:latest"
                         }
                     }
