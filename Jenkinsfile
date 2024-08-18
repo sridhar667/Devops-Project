@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh './build.sh'
-                sh "docker tag react-app sridharsdocker/react-app-dev:dev_latest
+                sh "docker tag react-app:latest ${DOCKERHUB_DEV_REPO}:dev_latest
             }
         }
         stage('Push to Docker Hub') {
