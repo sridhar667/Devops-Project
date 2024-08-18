@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', ${DOCKERHUB_CREDENTIALS}) {
                         if (env.BRANCH_NAME == 'dev') {
                             // Push the Docker image to the dev repository on Docker Hub
                             sh "docker push ${DOCKERHUB_DEV_REPO}:${BRANCH_NAME}_latest"
