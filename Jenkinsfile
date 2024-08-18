@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('docker-hub-credentials')
         DOCKERHUB_DEV_REPO = 'sridharsdocker/react-app-dev'
         DOCKERHUB_PROD_REPO = 'sridharsdocker/react-app-prod'
         GIT_REPO_URL = 'https://github.com/sridhar667/Devops-Project.git'
@@ -28,7 +27,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', ${DOCKERHUB_CREDENTIALS}) {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         if (env.BRANCH_NAME == 'dev') {
                             // Push the Docker image to the dev repository on Docker Hub
                             sh "docker push ${DOCKERHUB_DEV_REPO}:${BRANCH_NAME}_latest"
