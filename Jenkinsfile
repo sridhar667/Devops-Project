@@ -1,5 +1,8 @@
 pipeline {
     agent any
+     tools {
+    git 'Default'
+    }
     environment {
         DOCKERHUB_DEV_REPO = 'sridharsdocker/react-app-dev'
         DOCKERHUB_PROD_REPO = 'sridharsdocker/react-app-prod'
