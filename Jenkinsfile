@@ -7,13 +7,14 @@ pipeline {
         DOCKERHUB_DEV_REPO = 'sridharsdocker/react-app-dev'
         DOCKERHUB_PROD_REPO = 'sridharsdocker/react-app-prod'
         GIT_REPO_URL = 'https://github.com/sridhar667/Devops-Project.git'
+        BRANCH_NAME = 'dev'  // or 'master'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
                 // Checkout the code from the Git repository
-                git branch: env.BRANCH_NAME, url: "${GIT_REPO_URL}"
+                git branch:  env.BRANCH_NAME, url: "${GIT_REPO_URL}"
             }
         }
         stage('Build Docker Image') {
