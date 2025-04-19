@@ -1,13 +1,9 @@
 pipeline {
     agent any
-     tools {
-    git 'Default'
-    }
     environment {
         DOCKERHUB_DEV_REPO = 'sridharsdocker/react-app-dev'
         DOCKERHUB_PROD_REPO = 'sridharsdocker/react-app-prod'
         GIT_REPO_URL = 'https://github.com/sridhar667/Devops-Project.git'
-        BRANCH_NAME = 'dev'  // or 'master'
     }
 
     stages {
