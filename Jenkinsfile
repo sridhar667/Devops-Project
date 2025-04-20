@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         if (env.BRANCH_NAME == 'dev') {
                          def imageName = "${DOCKERHUB_DEV_REPO}:dev_latest"
                          sh "docker tag react-app ${imageName}"
