@@ -4,7 +4,7 @@ services:
     image: react-app
     build: .
     ports:
-      - "80:81"
+      - "8081:81"
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock  # <-- This is critical
